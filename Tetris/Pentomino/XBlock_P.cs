@@ -1,0 +1,15 @@
+﻿namespace Tetris.Pentomino
+{
+    public class XBlock_P : Block
+    {
+        private readonly Position[][] tiles = new Position[][]
+        {
+            new Position[] { new(0,1), new(1,0), new(1,1), new(1,2), new(2,1) }
+        };
+
+        public override int Id => 3;
+        public override int PreviewId => 17;
+        protected override Position StartOffset => new Position(0, 3);
+        protected override Position[][] Tiles => tiles;
+    }
+}

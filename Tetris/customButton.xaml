@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Tetris.customButton"
+             x:Name="root"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tetris"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Button 
+            x:Name="Button"
+            Width="{Binding ButtonWidth, ElementName=root}" 
+            Height="{Binding ButtonHeight, ElementName=root}"
+            Background="{Binding ButtonColor, ElementName=root}" 
+            Click="CustomButton_Click"
+            BorderBrush="{x:Null}" 
+            Panel.ZIndex="1"
+            PreviewMouseLeftButtonDown="CustomButton_MouseDown"
+            PreviewMouseLeftButtonUp="CustomButton_MouseUp">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="10">
+                                    
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Icon, ElementName=root}" 
+                       Width="24" Height="24" 
+                       Grid.Column="0"/>
+                <TextBlock Text="{Binding Text, ElementName=root}" TextAlignment="Center" Foreground="#F5EFE7" Grid.Column="1"/>
+            </Grid>
+        </Button>
+        
+        <Rectangle 
+            Width="{Binding ButtonWidth, ElementName=root}" 
+            Height="{Binding ButtonHeight, ElementName=root}"
+            Fill="{Binding BackgroundColor, ElementName=root}"
+            Margin="0 7 7 0"
+            RadiusX="10" 
+            RadiusY="10"/>
+    </Grid>
+</UserControl>
